@@ -1,0 +1,20 @@
+# Large raster files — exceed GitHub's 100MB file limit
+*.tiff
+*.tif
+
+# Building footprint shapefiles — too large for GitHub (up to 181MB)
+*.shp
+*.shx
+*.dbf
+
+# Temp/junk folders
+Delete/
+untitled folder/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
