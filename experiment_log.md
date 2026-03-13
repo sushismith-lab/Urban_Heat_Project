@@ -63,4 +63,22 @@ Each trial records what changed and the out-of-sample classification results on 
 
 ---
 
-## Trial 04 — *(next experiment)*
+## Trial 04 — XGBoost Classifier
+**Date:** 2026-03-13
+**Changes:**
+- Replaced Random Forest with **XGBoost** (`n_estimators=300`, `max_depth=6`, `learning_rate=0.1`, `subsample=0.8`, `colsample_bytree=0.8`)
+- Data unchanged: median mosaic GeoTIFFs, same 5 features
+
+| Class | Precision | Recall | F1 |
+|-------|-----------|--------|----|
+| High | 0.54 | 0.56 | 0.55 |
+| Low | 0.57 | 0.52 | 0.54 |
+| Medium | 0.49 | 0.52 | 0.50 |
+| **Macro avg** | 0.53 | 0.53 | **0.53** |
+| **Accuracy** | | | **0.5321** |
+
+> Result: Small but consistent improvement over RF (+0.01 macro F1). Medium class improved most (+0.02). XGBoost is now the best model.
+
+---
+
+## Trial 05 — *(next experiment)*
