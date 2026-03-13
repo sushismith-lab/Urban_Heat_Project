@@ -43,4 +43,24 @@ Each trial records what changed and the out-of-sample classification results on 
 
 ---
 
-## Trial 03 — *(next experiment)*
+## Trial 03 — Median Mosaic GeoTIFFs (cloud-free composite)
+**Date:** 2026-03-13
+**Changes:**
+- Replaced single-date GeoTIFFs with **90-day median mosaics** generated via Planetary Computer API
+- Cloud masking applied using Sentinel-2 SCL band (removed no-data, saturated, shadows, clouds)
+- Santiago: 42 scenes → 3897×3897 px | Rio: 5 scenes → 4343×2673 px | Freetown: 36 scenes → 5567×4454 px
+- Features unchanged: NDVI, NDBI, NDWI, MNDWI + building_density_100m
+
+| Class | Precision | Recall | F1 |
+|-------|-----------|--------|----|
+| High | 0.52 | 0.55 | 0.54 |
+| Low | 0.55 | 0.51 | 0.53 |
+| Medium | 0.48 | 0.49 | 0.48 |
+| **Macro avg** | 0.52 | 0.52 | **0.52** |
+| **Accuracy** | | | **0.5162** |
+
+> Result: No improvement. Cleaner imagery did not help — the bottleneck is likely the model itself (features, algorithm, or class boundary definition), not data quality.
+
+---
+
+## Trial 04 — *(next experiment)*
