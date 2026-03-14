@@ -81,4 +81,27 @@ Each trial records what changed and the out-of-sample classification results on 
 
 ---
 
-## Trial 05 — *(next experiment)*
+## Trial 05 — Feature Engineering + SMOTE + Hyperparameter Tuning
+**Date:** 2026-03-13
+**Changes:**
+- **6-band GeoTIFFs**: Added UI (B12-B08)/(B12+B08) and SAVI ((B08-B04)/(B08+B04+0.5))*1.5
+- **IBI**: Derived from existing indices — `[2*NDBI-(NDVI+NDWI)] / [2*NDBI+(NDVI+NDWI)]`
+- **50m building density**: Added alongside 100m (9 features total vs 5)
+- **SMOTE**: Balanced training classes (11,286 each: High/Low/Medium)
+- **XGBoost hyperparameter tuning**: RandomizedSearchCV (30 iterations, 3-fold CV)
+  - Best params: `n_estimators=500, max_depth=7, lr=0.05, subsample=0.8, gamma=0.1, min_child_weight=3`
+  - Best CV macro F1: 0.5688
+
+| Class | Precision | Recall | F1 |
+|-------|-----------|--------|----|
+| High | 0.58 | 0.60 | 0.59 |
+| Low | 0.62 | 0.57 | 0.59 |
+| Medium | 0.51 | 0.54 | 0.52 |
+| **Macro avg** | 0.57 | 0.57 | **0.57** |
+| **Accuracy** | | | **0.5685** |
+
+> Result: **+0.04 macro F1 over Trial 04** (+8% relative improvement). New features (UI, SAVI, IBI, 50m density) + SMOTE drove the majority of the gain. Medium class remains hardest to classify.
+
+---
+
+## Trial 06 — *(next experiment)*
